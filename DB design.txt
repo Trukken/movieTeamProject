@@ -1,0 +1,48 @@
+DB
+Movie:
+
+Movie id (Prim)
+Movie name
+release year
+short_synopsis
+long_synopsis
+Movie cat
+Movie path
+poster_path
+
+
+
+
+Category:
+cat_id (Prim)
+cat_name
+
+//Movie Actors:
+
+Movie id (Foreign)
+Actor id (Foreign)
+
+Actors:
+
+Actor id (Prim)
+Actor name
+
+user:
+
+user_id (Prim)
+user_name
+user_pw
+email
+
+
+playlist:
+playlist_id (Prim)
+playlist_name
+playlist_creation
+user_id (Foreign)
+
+//playlist movies:
+playlist_id (Foreign)
+movie_id (Foreign)
+
+
