@@ -7,7 +7,7 @@ $res = preg_replace("/[^0-9]/", "", $_POST['pagination']);
 
 $limit = 4;
 $pages = +$res;
-if ($pages == 1) {
+if ($pages == 0) {
     $sql = 'SELECT * FROM movies ORDER BY cat_id ASC LIMIT ' . $limit;
 } else {
     $limit = 4 * $pages;
