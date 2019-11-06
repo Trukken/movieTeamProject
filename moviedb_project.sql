@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 06, 2019 at 10:05 AM
+-- Generation Time: Nov 06, 2019 at 10:58 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -58,13 +58,14 @@ DROP TABLE IF EXISTS `movies`;
 CREATE TABLE IF NOT EXISTS `movies` (
   `movie_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `category` varchar(255) NOT NULL,
+  `cat_id` int(255) NOT NULL,
   `movie_path` varchar(255) DEFAULT NULL,
   `release_year` date DEFAULT NULL,
   `short_synopsis` varchar(30) DEFAULT NULL,
   `long_synopsis` varchar(3000) DEFAULT NULL,
   `post_path` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`movie_id`)
+  PRIMARY KEY (`movie_id`),
+  KEY `cat_id` (`cat_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -129,6 +130,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `movies`
+--
+ALTER TABLE `movies`
+  ADD CONSTRAINT `movies_ibfk_1` FOREIGN KEY (`cat_id`) REFERENCES `category` (`cat_id`);
 
 --
 -- Constraints for table `movie_actors`
