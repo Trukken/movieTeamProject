@@ -6,7 +6,7 @@ Movie name
 release year
 short_synopsis
 long_synopsis
-Movie cat
+cat_id (Foreign)
 Movie path
 poster_path
 
