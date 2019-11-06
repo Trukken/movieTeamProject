@@ -5,7 +5,7 @@ require_once './connect-to.php';
 
 $search = filter_var($_POST['search'], FILTER_SANITIZE_STRING);
 
-$sql = "SELECT * FROM movies WHERE name LIKE '$search%'";
+$sql = "SELECT * FROM movies WHERE name LIKE '%$search%'";
 $query = connectTo($sql);
 $array = [];
 echo '<ul id="movies-list">';

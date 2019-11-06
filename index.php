@@ -23,6 +23,34 @@
     </form>
     <div id="results"></div>
 
+    <hr>
+    <div>
+        <ul>
+            <?php
+            require_once './connect-to.php';
+            //SELECT COUNT(m.movie_id) AS count, c.cat_name FROM category c JOIN movies m ON m.cat_id=c.cat_id GROUP BY c.cat_id ORDER BY RAND() LIMIT 3
+            $sql = "SELECT COUNT(m.movie_id) AS count, c.cat_name FROM category c JOIN movies m ON m.cat_id=c.cat_id GROUP BY c.cat_id ORDER BY RAND() LIMIT 3";
+            //var_dump($sql);
+            $query = connectTo($sql);
+            while ($row = mysqli_fetch_assoc($query)) {
+                echo '<li>' . $row['cat_name'] . $row['count'] . '</li>';
+            }
+            ?>
+        </ul>
+    </div>
+    <hr>
+    <div>
+        <ul>
+            <?php
+            $sql = "SELECT * FROM movies ORDER BY release_year DESC LIMIT 4";
+            $query = connectTo($sql);
+            while ($row = mysqli_fetch_assoc($query)) {
+                echo '<li>' . $row['name'] . ' ' . $row['release_year'] . '</li>';
+            }
+
+            ?>
+        </ul>
+    </div>
 
 
 
@@ -35,8 +63,12 @@
             let xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.querySelector('#results').innerHTML = this.responseText;
-                    document.querySelector('#results').style.display = "block";
+                    if (search != '') {
+                        document.querySelector('#results').innerHTML = this.responseText;
+                        document.querySelector('#results').style.display = "block";
+                    } else {
+                        document.querySelector('#results').style.display = "none";
+                    }
                 }
             };
             xhttp.open("POST", "search.php", true);

@@ -18,6 +18,7 @@ function navBar()
             <a class="nav-item nav-link active" href="index.php">Home</a>
             <a class="nav-item nav-link" href="register.php">Register</a>
             <a class="nav-item nav-link" href="login.php">Login</a>
+            <a class="nav-item nav-link" href="catalogue.php">Catalogue</a>
         </div>
         </div>
     </nav>';
