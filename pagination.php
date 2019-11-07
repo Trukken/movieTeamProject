@@ -46,5 +46,13 @@ if ($pages == 0) {
 }
 $query = connectTo($sql);
 while ($row = mysqli_fetch_assoc($query)) {
-    echo '<li>' . $row['name'] . ' ' . $row['cat_name'] . '<img src="' . $row['post_path'] . '"/>' . $row['release_year'] . $row['short_synopsis'] .  " " . '</li><br>';
+    echo '<li>' . $row['name'] . ' ' .$row['movie_id'] . ' '. $row['cat_name'] . '<img src="' . $row['post_path'] . '"/>' . $row['release_year'] . $row['short_synopsis'] .  ' <a href="details.php?details=' . $row['movie_id'] . '">Click here for more detail</a>' .  ' ||||  <a href="edit.php?details=' . $row['movie_id'] . '">Edit the movie</a>'  .  ' ||||  <a href="add.php?details=' . $row['movie_id'] . '">Add to favourites</a>'.  '</li><br>';
 }
+
+
+
+
+    //$sql = "SELECT * FROM movie m JOIN movie_actors ma ON m.movie_id=ma.movie_id JOIN actors a ON ma.actor_id=a.actor_id";
+
+
+    ?>

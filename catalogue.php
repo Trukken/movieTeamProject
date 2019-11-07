@@ -27,12 +27,14 @@
     <ul class="listOfProd">
         <?php
         while ($row = mysqli_fetch_assoc($query)) {
-<<<<<<< Updated upstream
+
             echo '<li>' . $row['name'] . ' ' . $row['cat_name'] . '<img src="' . $row['post_path'] . '"/>' . $row['release_year'] . $row['short_synopsis'] .  ' <a href="details.php?' . $row['movie_id'] . '">Click here for more detail</a>' . '</li><br>';
-=======
+
             
             echo '<li>' . '<img class = "element" src="' . $row['post_path'] . '"/><br>' .  $row['name'] . '<br>' . $row['movie_id'] . '<br>' . $row['cat_name'] .'<br>'. $row['release_year'] .'<br>'. $row['short_synopsis'] .'<br>'.  ' <a href="details.php?details=' . $row['movie_id'] . '"><br>Click here for more detail</a>' .  ' ||||  <a href="edit.php?details=' . $row['movie_id'] . '">Edit the movie</a>'  .  ' ||||  <a href="add.php?details=' . $row['movie_id'] . '">Add to favourites</a>' .  '</li><br>';
->>>>>>> Stashed changes
+
+            echo '<li>' . $row['name'] . ' ' .$row['movie_id'] . ' '. $row['cat_name'] . '<img src="' . $row['post_path'] . '"/>' . $row['release_year'] . $row['short_synopsis'] .  ' <a href="details.php?details=' . $row['movie_id'] . '">Click here for more detail</a>' .  ' ||||  <a href="edit.php?details=' . $row['movie_id'] . '">Edit the movie</a>'  .  ' ||||  <a href="add.php?details=' . $row['movie_id'] . '">Add to favourites</a>'.  '</li><br>';
+
         } ?>
     </ul>
 
