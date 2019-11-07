@@ -39,7 +39,6 @@
                 WHERE (user_email = "' . $_POST['email'] . '") and
                 (user_password = "' . $_POST['password'] . '")';
             connectTo($query);
-            var_dump($query);
         } else
             echo 'user not registered';
     }
