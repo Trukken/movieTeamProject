@@ -78,6 +78,7 @@
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         document.querySelector('.listOfProd').innerHTML = this.responseText;
+                        addListener();
                     }
                 };
                 xhttp.open("POST", "pagination.php", true);
@@ -104,6 +105,7 @@
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.querySelector('.listOfProd').innerHTML = this.responseText;
+                    addListener();
                 }
             };
             xhttp.open("POST", "pagination.php", true);
@@ -124,6 +126,7 @@
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.querySelector('.listOfProd').innerHTML = this.responseText;
+                    addListener();
                 }
             };
             xhttp.open("POST", "pagination.php", true);
@@ -144,6 +147,7 @@
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.querySelector('.listOfProd').innerHTML = this.responseText;
+                    addListener();
                 }
             };
             xhttp.open("POST", "pagination.php", true);
@@ -158,27 +162,31 @@
             checkPage();
         })
 
-        allMovies = document.querySelectorAll('.movie')
-        for (const movie of allMovies) {
-            movie.addEventListener('click', function(e) {
-                movieId = movie.id.replace(/[^0-9]/, '');
-                console.log(movieId);
-                e.preventDefault();
-                let xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        document.querySelector('.test').innerHTML = this.responseText;
-                    }
-                };
-                xhttp.open("POST", "add-to-playlist.php", true);
-                xhttp.setRequestHeader(
-                    "Content-type",
-                    "application/x-www-form-urlencoded"
-                );
-                xhttp.send(
-                    `movie_id=${movieId}`
-                );
-            });
+        addListener();
+
+        function addListener() {
+            allMovies = document.querySelectorAll('.movie')
+            for (const movie of allMovies) {
+                movie.addEventListener('click', function(e) {
+                    movieId = movie.id.replace(/[^0-9]/, '');
+                    console.log(movieId);
+                    e.preventDefault();
+                    let xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.querySelector('.test').innerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open("POST", "add-to-playlist.php", true);
+                    xhttp.setRequestHeader(
+                        "Content-type",
+                        "application/x-www-form-urlencoded"
+                    );
+                    xhttp.send(
+                        `movie_id=${movieId}`
+                    );
+                });
+            }
         }
 
         function checkPage() {
