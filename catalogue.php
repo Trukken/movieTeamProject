@@ -17,15 +17,17 @@
 
     require_once './connect-to.php';
 
-    $sql = "SELECT * FROM movies ORDER BY cat_id ASC";
+    $sql = "SELECT * FROM movies m JOIN category c ON c.cat_id=m.cat_id ORDER BY c.cat_name ASC";
     $queryPagi = connectTo($sql);
-    $sql = 'SELECT * FROM  movies ORDER BY cat_id ASC LIMIT 4';
+    $sql = 'SELECT * FROM  movies m JOIN category c ON c.cat_id=m.cat_id ORDER BY c.cat_name ASC LIMIT 4';
     $query = connectTo($sql);
     ?>
+
+    <button class="orderBy">Order By:Asc/Desc</button>
     <div class="listOfProd">
         <?php
         while ($row = mysqli_fetch_assoc($query)) {
-            echo $row['name'] . '<br>';
+            echo '<li>' . $row['name'] . ' ' . $row['cat_name'] . '<img src="' . $row['post_path'] . '"/>' . $row['release_year'] . $row['short_synopsis'] .  ' <a href="details.php?' . $row['movie_id'] . '">Click here for more detail</a>' . '</li><br>';
         } ?>
     </div>
 
@@ -41,6 +43,9 @@
                 echo '<a class="pagination" id="P' . ($i - 1) . '" href="#">' . $i . '</a>';
             }
         }
+
+
+
         ?>
         <a href="#" class="paginationNext" style="display:none;">Next</a>
     </div>
@@ -60,7 +65,7 @@
     <script>
         let pageOn;
         let clearedPage;
-
+        let reverse = true;
         allPagination = document.querySelectorAll('.pagination');
 
         for (const pagination of allPagination) {
@@ -81,14 +86,37 @@
                 );
 
                 xhttp.send(
-                    `pagination=${pagination1}`
+                    `pagination=${pagination1}&reverse=${reverse}`
                 );
-                clearedPage = pageOn.replace(/[^0-9]/, '');
-                console.log(clearedPage);
 
                 checkPage();
             })
         }
+
+
+
+
+        document.querySelector('.orderBy').addEventListener('click', function(e) {
+            e.preventDefault();
+            reverse = !reverse;
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.querySelector('.listOfProd').innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("POST", "pagination.php", true);
+            xhttp.setRequestHeader(
+                "Content-type",
+                "application/x-www-form-urlencoded"
+            );
+
+            xhttp.send(
+                `pagination=0&reverse=${reverse}`
+            );
+            checkPage();
+        })
+
         document.querySelector('.paginationPrev').addEventListener("click", function(e) {
             e.preventDefault();
             let xhttp = new XMLHttpRequest();
@@ -132,6 +160,8 @@
 
 
         function checkPage() {
+
+            clearedPage = pageOn.replace(/[^0-9]/, '');
             if (clearedPage > 0) {
                 document.querySelector('.paginationPrev').style.display = 'block';
             } else {
