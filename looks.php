@@ -15,9 +15,10 @@ function navBar()
     } else {
         echo '<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="index.php">Home</a>
             <a class="nav-item nav-link" href="register.php">Register</a>
             <a class="nav-item nav-link" href="login.php">Login</a>
+            <a class="nav-item nav-link" href="catalogue.php">Catalogue</a>
         </div>
         </div>
     </nav>';
