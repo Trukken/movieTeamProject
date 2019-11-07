@@ -17,12 +17,17 @@
 
 
     <?php navBar(); ?>
-
-    <form action="" method="POST">
-        <input type="email" name="email" placeholder="Your email">
-        <input type="password" name="password" placeholder="Your password">
+    <div class="log">
+        <h2>Login page</h2>
+    </div>
+    <form class="nice" action="" method="POST">
+        Insert your e-mail please: <br>
+        <input type="email" name="email" placeholder="Your email"><br><br>
+        Insert your password please: <br>
+        <input type="password" name="password" placeholder="Your password"><br><br>
         <input type="submit" name="login" value="Login">
-        <a href="<?php echo 'registration.php'; ?>">Register</a>
+        <!--<a href="<?php //echo 'registration.php'; 
+                        ?>">Register</a>-->
         <a href="<?php echo 'forgotpassword.php'; ?>">Forgotten password</a>
     </form>
 

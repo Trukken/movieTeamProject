@@ -14,12 +14,18 @@
 <body>
 
 	<?php navBar(); ?>
-
-	<form action="" method="POST">
-		<input type="text" name="name" placeholder="Your Name"><br>
-		<input type="text" name="email" placeholder="Email Adress"><br>
-		<input type="password" name="password" placeholder="Password"><br>
-		<input type="password" name="checkPassword" placeholder="Check password"><br>
+	<div class="title">
+		<h2>Registration page</h2>
+	</div>
+	<form class="reg" action="" method="POST">
+		Insert your name please <br>
+		<input type="text" name="name" placeholder="Your Name"><br><br>
+		Insert your e-mail adress please <br>
+		<input type="text" name="email" placeholder="Email Adress"><br><br>
+		Insert your password please <br>
+		<input type="password" name="password" placeholder="Password"><br><br>
+		Retype your password please <br>
+		<input type="password" name="checkPassword" placeholder="Check password"><br><br><br>
 		<input type="submit" name="submitButton" value="Register">
 		<a href="<?php echo 'login.php'; ?>">Login</a>
 	</form>

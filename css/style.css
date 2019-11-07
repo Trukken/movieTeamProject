@@ -1,0 +1,30 @@
+
+body {
+    background-color: aqua;
+}
+.listOfProd {
+    text-decoration: none;
+    padding-left: 50px;
+}
+.element {
+    width:200px;
+    height:200px;
+    object-fit:scale-down;    
+}
+.nice {
+    margin-top: 50px;
+    text-align: center;
+}
+.reg {
+    margin-top: 50px;
+    margin-left: 25px;
+    text-align: center;
+}
+.title {
+    text-align: center;
+    margin-top: 50px;
+}
+.log {
+    text-align: center;
+    margin-top: 50px;    
+}
