@@ -14,3 +14,8 @@ function connectTo($sql)
 
     return $query;
 }
+
+
+/*
+Lorem ipsum dolor sit -  short synopsis
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt dignissimos deserunt odio, ab nobis, soluta alias voluptatem laborum eius totam ipsa qui officia! Possimus magnam nemo minus assumenda est?
