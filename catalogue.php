@@ -27,7 +27,7 @@
     <div class="listOfProd">
         <?php
         while ($row = mysqli_fetch_assoc($query)) {
-            echo '<li>' . $row['name'] . ' ' .$row['movie_id'] . ' '. $row['cat_name'] . '<img src="' . $row['post_path'] . '"/>' . $row['release_year'] . $row['short_synopsis'] .  ' <a href="details.php?details=' . $row['movie_id'] . '">Click here for more detail</a>' . '</li><br>';
+            echo '<li>' . $row['name'] . ' ' .$row['movie_id'] . ' '. $row['cat_name'] . '<img src="' . $row['post_path'] . '"/>' . $row['release_year'] . $row['short_synopsis'] .  ' <a href="details.php?details=' . $row['movie_id'] . '">Click here for more detail</a>' .  ' ||||  <a href="edit.php?details=' . $row['movie_id'] . '">Edit the movie</a>'  .  ' ||||  <a href="add.php?details=' . $row['movie_id'] . '">Add to favourites</a>'.  '</li><br>';
         } ?>
     </div>
 
