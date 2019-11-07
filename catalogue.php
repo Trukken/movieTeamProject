@@ -27,14 +27,7 @@
     <ul class="listOfProd">
         <?php
         while ($row = mysqli_fetch_assoc($query)) {
-
-            echo '<li>' . $row['name'] . ' ' . $row['cat_name'] . '<img src="' . $row['post_path'] . '"/>' . $row['release_year'] . $row['short_synopsis'] .  ' <a href="details.php?' . $row['movie_id'] . '">Click here for more detail</a>' . '</li><br>';
-
-            
-            echo '<li>' . '<img class = "element" src="' . $row['post_path'] . '"/><br>' .  $row['name'] . '<br>' . $row['movie_id'] . '<br>' . $row['cat_name'] .'<br>'. $row['release_year'] .'<br>'. $row['short_synopsis'] .'<br>'.  ' <a href="details.php?details=' . $row['movie_id'] . '"><br>Click here for more detail</a>' .  ' ||||  <a href="edit.php?details=' . $row['movie_id'] . '">Edit the movie</a>'  .  ' ||||  <a href="add.php?details=' . $row['movie_id'] . '">Add to favourites</a>' .  '</li><br>';
-
-            echo '<li>' . $row['name'] . ' ' .$row['movie_id'] . ' '. $row['cat_name'] . '<img src="' . $row['post_path'] . '"/>' . $row['release_year'] . $row['short_synopsis'] .  ' <a href="details.php?details=' . $row['movie_id'] . '">Click here for more detail</a>' .  ' ||||  <a href="edit.php?details=' . $row['movie_id'] . '">Edit the movie</a>'  .  ' ||||  <a href="add.php?details=' . $row['movie_id'] . '">Add to favourites</a>'.  '</li><br>';
-
+            echo '<li>' . $row['name'] . ' ' . $row['movie_id'] . ' ' . $row['cat_name'] . '<img src="' . $row['post_path'] . '"/>' . $row['release_year'] . $row['short_synopsis'] .  ' <a href="details.php?details=' . $row['movie_id'] . '">Click here for more detail</a>' .  ' ||||  <a href="edit.php?details=' . $row['movie_id'] . '">Edit the movie</a>'  .  ' ||||  <button class="movie" id="M' . $row['movie_id'] . '">Add to favourites</button>' .  '</li><br>';
         } ?>
     </ul>
 
@@ -164,7 +157,26 @@
             checkPage();
         })
 
-
+        allMovies = document.querySelectorAll('.movie')
+        for (const movie of allMovies) {
+            movie.addEventListener('click', function(e) {
+                movieId = movie.id.replace(/[^0-9]/, '');
+                console.log(movieId);
+                e.preventDefault();
+                let xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {}
+                };
+                xhttp.open("POST", "add-to-playlist.php", true);
+                xhttp.setRequestHeader(
+                    "Content-type",
+                    "application/x-www-form-urlencoded"
+                );
+                xhttp.send(
+                    `movie_id=${movieId}`
+                );
+            });
+        }
 
         function checkPage() {
 
