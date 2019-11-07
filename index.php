@@ -33,7 +33,7 @@
             //var_dump($sql);
             $query = connectTo($sql);
             while ($row = mysqli_fetch_assoc($query)) {
-                echo '<li>' . $row['cat_name'] . $row['count'] . '</li>';
+                echo '<li>' . $row['cat_name'].': ' . $row['count'] . '</li>';
             }
             ?>
         </ul>

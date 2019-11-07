@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <?php
 
 if (isset($_POST['submitButton'])) {
@@ -22,6 +23,8 @@ if (isset($_POST['submitButton'])) {
 	<input type="submit" name="submitButton" value="Submit">
 </form>
 =======
+=======
+>>>>>>> Stashed changes
 <form action="" method="POST">
 	<input type="text" name="name" placeholder="Your Name"><br>
 	<input type="text" name="email" placeholder="Email Adress"><br>
@@ -57,4 +60,7 @@ if (isset($_POST['submitButton'])) {
 	}
 }
 ?>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
