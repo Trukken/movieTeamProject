@@ -26,8 +26,6 @@
         Insert your password please: <br>
         <input type="password" name="password" placeholder="Your password"><br><br>
         <input type="submit" name="login" value="Login">
-        <!--<a href="<?php //echo 'registration.php'; 
-                        ?>">Register</a>-->
         <a href="<?php echo 'forgotpassword.php'; ?>">Forgotten password</a>
     </form>
 
@@ -39,11 +37,13 @@
         $password = $_POST['password'];
         if (strpos($_POST['email'], '@') and $_POST['password']) {
             echo 'user recognised';
-            $query = 'SELECT *
+            $sql = 'SELECT *
                 FROM users
                 WHERE (user_email = "' . $_POST['email'] . '") and
                 (user_password = "' . $_POST['password'] . '")';
-            connectTo($query);
+            $query = connectTo($sql);
+            $user = mysqli_fetch_assoc($query);
+            $_SESSION['loggedUser'] = $user['user_id'];
         } else
             echo 'user not registered';
     }

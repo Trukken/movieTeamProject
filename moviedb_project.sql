@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 06, 2019 at 01:36 PM
+-- Generation Time: Nov 07, 2019 at 02:34 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -118,7 +118,7 @@ INSERT INTO `movies` (`movie_id`, `name`, `cat_id`, `movie_path`, `release_year`
 (7, 'leave no trace', 4, NULL, '2018-09-15', 'Lorem ipsum dolor sit', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt dignissimos deserunt odio, ab nobis, soluta alias voluptatem laborum eius totam ipsa qui officia! Possimus magnam nemo minus assumenda est?\r\n', './pics/leave-no-trace-1530796800.jpg'),
 (8, 'A prayer before dawn', 4, NULL, '2019-06-09', 'Lorem ipsum dolor sit', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt dignissimos deserunt odio, ab nobis, soluta alias voluptatem laborum eius totam ipsa qui officia! Possimus magnam nemo minus assumenda est?\r\n', './pics/a-prayer-before-dawn-1533307129.jpg'),
 (9, 'The endless', 3, NULL, '2019-05-03', 'Lorem ipsum dolor sit', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt dignissimos deserunt odio, ab nobis, soluta alias voluptatem laborum eius totam ipsa qui officia! Possimus magnam nemo minus assumenda est?\r\n', './pics/the-endless-1522778896.jpg'),
-(10, 'Paddington 2', 1, NULL, '2019-11-05', 'Lorem ipsum dolor sit', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt dignissimos deserunt odio, ab nobis, soluta alias voluptatem laborum eius totam ipsa qui officia! Possimus magnam nemo minus assumenda est?\r\n', './pics/paddington-2-1522778957.jpg');
+(10, 'Paddingtion 2', 1, NULL, '2019-11-05', 'Lorem ipsum dolor sit', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt dignissimos deserunt odio, ab nobis, soluta alias voluptatem laborum eius totam ipsa qui officia! Possimus magnam nemo minus assumenda est?\r\n', './pics/paddington-2-1522778957.jpg');
 
 -- --------------------------------------------------------
 
@@ -164,7 +164,14 @@ CREATE TABLE IF NOT EXISTS `playlist` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`playlist_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `playlist`
+--
+
+INSERT INTO `playlist` (`playlist_id`, `playlist_name`, `playlist_creation_time`, `user_id`) VALUES
+(1, 'defaultPlayList', '2019-11-07', 1);
 
 -- --------------------------------------------------------
 
@@ -193,7 +200,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_password` varchar(80) NOT NULL,
   `user_email` varchar(120) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_name`, `user_password`, `user_email`) VALUES
+(1, '23', '123456789', '23@dsa.ju');
 
 --
 -- Constraints for dumped tables

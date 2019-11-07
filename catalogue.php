@@ -22,6 +22,7 @@
     $sql = 'SELECT * FROM  movies m JOIN category c ON c.cat_id=m.cat_id ORDER BY c.cat_name ASC LIMIT 4';
     $query = connectTo($sql);
     ?>
+    <p class="test"></p>
 
     <button class="orderBy">Order By:Asc/Desc</button>
     <ul class="listOfProd">
@@ -50,7 +51,6 @@
         ?>
         <a href="#" class="paginationNext" style="display:none;">Next</a>
     </div>
-
 
 
 
@@ -166,7 +166,9 @@
                 e.preventDefault();
                 let xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {}
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.querySelector('.test').innerHTML = this.responseText;
+                    }
                 };
                 xhttp.open("POST", "add-to-playlist.php", true);
                 xhttp.setRequestHeader(
